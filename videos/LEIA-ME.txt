@@ -1,0 +1,7 @@
+Coloque nesta pasta os vídeos com estes nomes:
+recebimento.mp4
+armazenagem.mp4
+reposicao.mp4
+separacao.mp4
+conferencia.mp4
+enderecar-produto.mp4

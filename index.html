@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#ffffff">
+<title>Treinamento WMS | PMG</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&display=swap');
+
+:root{
+  --red:#E62929;
+  --green:#007C3F;
+  --dark:#27312D;
+  --text:#303936;
+  --muted:#6F7874;
+  --bg:#F4F7F5;
+  --white:#FFFFFF;
+  --line:#E1E8E4;
+}
+
+*{box-sizing:border-box}
+
+html,body{
+  margin:0;
+  min-height:100%;
+  font-family:'Montserrat',Arial,sans-serif;
+  color:var(--text);
+  background:var(--bg);
+}
+
+button{font-family:inherit}
+
+.header{
+  background:#fff;
+  border-bottom:4px solid var(--green);
+  box-shadow:0 2px 12px rgba(0,0,0,.06);
+  padding:14px 20px;
+}
+
+.header-inner{
+  max-width:1180px;
+  margin:auto;
+  display:flex;
+  align-items:center;
+  gap:15px;
+}
+
+.logo{
+  width:58px;
+  height:58px;
+  object-fit:contain;
+  border-radius:12px;
+}
+
+.brand-title{
+  font-size:clamp(20px,3vw,29px);
+  font-weight:800;
+  line-height:1.05;
+  color:var(--dark);
+}
+
+.brand-title span{color:var(--green)}
+
+.brand-sub{
+  margin-top:5px;
+  font-size:10px;
+  color:var(--muted);
+  letter-spacing:2px;
+  text-transform:uppercase;
+}
+
+.container{
+  width:min(1180px,100%);
+  margin:auto;
+  padding:38px 20px 42px;
+}
+
+.hero{
+  position:relative;
+  overflow:hidden;
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:24px;
+  padding:32px;
+  margin-bottom:22px;
+  box-shadow:0 8px 28px rgba(0,0,0,.05);
+}
+
+.hero:after{
+  content:"";
+  position:absolute;
+  right:-80px;
+  top:-100px;
+  width:260px;
+  height:260px;
+  background:linear-gradient(135deg,rgba(230,41,41,.13),rgba(0,124,63,.12));
+  transform:rotate(45deg);
+}
+
+.hero small{
+  color:var(--green);
+  font-weight:700;
+  letter-spacing:2px;
+  text-transform:uppercase;
+}
+
+.hero h1{
+  position:relative;
+  z-index:1;
+  margin:8px 0 7px;
+  font-size:clamp(28px,5vw,42px);
+  line-height:1.05;
+  color:var(--dark);
+}
+
+.hero h1 span{color:var(--green)}
+
+.hero p{
+  position:relative;
+  z-index:1;
+  margin:0;
+  color:var(--muted);
+  font-size:14px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+}
+
+.card{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:20px;
+  min-height:200px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  box-shadow:0 6px 20px rgba(0,0,0,.055);
+  transition:transform .18s ease,box-shadow .18s ease;
+}
+
+.card:hover{
+  transform:translateY(-3px);
+  box-shadow:0 12px 26px rgba(0,0,0,.09);
+}
+
+.card-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+}
+
+.icon{
+  width:52px;
+  height:52px;
+  border-radius:14px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:25px;
+  background:#F1F8F4;
+  color:var(--green);
+}
+
+.card:nth-child(even) .icon{
+  background:#FFF1F1;
+  color:var(--red);
+}
+
+.number{
+  font-size:34px;
+  line-height:1;
+  font-weight:800;
+  color:#E8EEEB;
+}
+
+.card h2{
+  margin:15px 0 6px;
+  font-size:18px;
+  color:var(--dark);
+}
+
+.card p{
+  margin:0 0 17px;
+  color:var(--muted);
+  font-size:11px;
+  line-height:1.5;
+}
+
+.btn{
+  width:100%;
+  min-height:48px;
+  border:1px solid var(--green);
+  border-radius:11px;
+  background:#fff;
+  color:var(--green);
+  font-size:12px;
+  font-weight:800;
+  cursor:pointer;
+}
+
+.btn:hover{
+  background:var(--green);
+  color:#fff;
+}
+
+#videoPage{display:none}
+
+.video-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+  margin-bottom:18px;
+}
+
+.back{
+  min-height:45px;
+  padding:0 17px;
+  border:1px solid var(--green);
+  border-radius:10px;
+  background:#fff;
+  color:var(--green);
+  font-weight:800;
+  cursor:pointer;
+}
+
+.video-title h1{
+  margin:0;
+  font-size:clamp(24px,5vw,34px);
+  color:var(--red);
+}
+
+.video-card{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:20px;
+  padding:16px;
+  box-shadow:0 8px 28px rgba(0,0,0,.06);
+}
+
+.video-box{
+  background:#111;
+  border-radius:14px;
+  overflow:hidden;
+}
+
+video{
+  display:block;
+  width:100%;
+  max-height:72vh;
+  background:#111;
+}
+
+.tip{
+  margin-top:14px;
+  padding:14px 16px;
+  border-left:4px solid var(--red);
+  background:#FFF5F5;
+  border-radius:9px;
+  color:var(--muted);
+  font-size:11px;
+  line-height:1.5;
+}
+
+.tip strong{color:var(--red)}
+
+footer{
+  text-align:center;
+  color:#87918C;
+  font-size:10px;
+  padding:0 20px 25px;
+}
+
+@media(max-width:850px){
+  .grid{grid-template-columns:repeat(2,1fr)}
+}
+
+@media(max-width:600px){
+  .header{padding:12px 15px}
+  .logo{width:50px;height:50px}
+  .brand-title{font-size:19px}
+  .brand-sub{font-size:8px;letter-spacing:1.4px}
+
+  .container{padding:20px 13px 30px}
+  .hero{padding:24px 20px;border-radius:18px}
+  .hero h1{font-size:27px}
+  .hero p{font-size:12px}
+
+  .grid{grid-template-columns:1fr;gap:12px}
+
+  .card{
+    min-height:auto;
+    padding:17px;
+    border-radius:15px;
+  }
+
+  .card h2{font-size:17px}
+  .card p{font-size:11px;margin-bottom:13px}
+  .btn{min-height:50px}
+
+  .video-header{
+    align-items:flex-start;
+    flex-direction:column-reverse;
+  }
+
+  .video-header .back{width:100%}
+
+  .video-card{
+    padding:8px;
+    border-radius:15px;
+  }
+
+  .video-box{
+    border-radius:10px;
+    margin:0;
+  }
+
+  video{max-height:none}
+
+  .tip{font-size:10px}
+}
+
+@media(orientation:landscape) and (max-height:600px){
+  video{max-height:78vh}
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <img class="logo" src="logo.png" alt="Logo PMG">
+    <div>
+      <div class="brand-title">TREINAMENTO <span>WMS</span></div>
+      <div class="brand-sub">Processos Operacionais</div>
+    </div>
+  </div>
+</header>
+
+<main id="menuPage">
+  <section class="container">
+    <div class="hero">
+      <small>PMG • Capacitação Operacional</small>
+      <h1>Escolha o <span>processo</span></h1>
+      <p>Assista aos vídeos e conheça os principais processos do WMS.</p>
+    </div>
+
+    <div class="grid">
+
+      <article class="card">
+        <div class="card-top"><div class="icon">📥</div><div class="number">01</div></div>
+        <div><h2>Recebimento</h2><p>Entrada e conferência dos produtos no WMS.</p></div>
+        <button class="btn" onclick="openVideo('Recebimento','videos/recebimento.mp4')">▶ Assistir vídeo</button>
+      </article>
+
+      <article class="card">
+        <div class="card-top"><div class="icon">🏗️</div><div class="number">02</div></div>
+        <div><h2>Armazenagem</h2><p>Movimentação e armazenamento no endereço.</p></div>
+        <button class="btn" onclick="openVideo('Armazenagem','videos/armazenagem.mp4')">▶ Assistir vídeo</button>
+      </article>
+
+      <article class="card">
+        <div class="card-top"><div class="icon">🔄</div><div class="number">03</div></div>
+        <div><h2>Reposição</h2><p>Abastecimento dos endereços de picking.</p></div>
+        <button class="btn" onclick="openVideo('Reposição','videos/reposicao.mp4')">▶ Assistir vídeo</button>
+      </article>
+
+      <article class="card">
+        <div class="card-top"><div class="icon">📦</div><div class="number">04</div></div>
+        <div><h2>Separação</h2><p>Execução da separação utilizando o WMS.</p></div>
+        <button class="btn" onclick="openVideo('Separação','videos/separacao.mp4')">▶ Assistir vídeo</button>
+      </article>
+
+      <article class="card">
+        <div class="card-top"><div class="icon">✅</div><div class="number">05</div></div>
+        <div><h2>Conferência</h2><p>Validação dos produtos e do pedido.</p></div>
+        <button class="btn" onclick="openVideo('Conferência','videos/conferencia.mp4')">▶ Assistir vídeo</button>
+      </article>
+
+      <article class="card">
+        <div class="card-top"><div class="icon">📍</div><div class="number">06</div></div>
+        <div><h2>Endereçar Produto</h2><p>Direcionamento do produto para o endereço correto.</p></div>
+        <button class="btn" onclick="openVideo('Endereçar Produto','videos/enderecar-produto.mp4')">▶ Assistir vídeo</button>
+      </article>
+
+    </div>
+  </section>
+</main>
+
+<main id="videoPage">
+  <section class="container">
+    <div class="video-header">
+      <button class="back" onclick="closeVideo()">← Voltar ao menu</button>
+      <div class="video-title"><h1 id="videoTitle"></h1></div>
+    </div>
+
+    <div class="video-card">
+      <div class="video-box">
+        <video id="player" controls playsinline preload="metadata"></video>
+      </div>
+      <div class="tip"><strong>💡 Dica:</strong> assista ao vídeo completo para acompanhar o passo a passo do processo no WMS.</div>
+    </div>
+  </section>
+</main>
+
+<footer>Treinamento WMS • PMG</footer>
+
+<script>
+const menuPage=document.getElementById('menuPage');
+const videoPage=document.getElementById('videoPage');
+const player=document.getElementById('player');
+const videoTitle=document.getElementById('videoTitle');
+
+function openVideo(title,file){
+  videoTitle.textContent=title;
+  player.src=file;
+  menuPage.style.display='none';
+  videoPage.style.display='block';
+  window.scrollTo(0,0);
+}
+
+function closeVideo(){
+  player.pause();
+  player.removeAttribute('src');
+  player.load();
+  videoPage.style.display='none';
+  menuPage.style.display='block';
+  window.scrollTo(0,0);
+}
+</script>
+
+</body>
+</html>
